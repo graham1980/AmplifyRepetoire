@@ -1,0 +1,7 @@
+type Recipe @model{
+  id: ID
+  title: String!
+  category: String!
+  owner: String
+  createdAt: String
+}

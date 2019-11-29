@@ -1,0 +1,19 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-repetoire-local-20190919095127-authRole",
+            "UnauthRoleArn": "arn:aws:iam::081076588590:role/amplify-repetoire-local-20190919095127-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::081076588590:role/amplify-repetoire-local-20190919095127-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-repetoire-local-20190919095127-deployment",
+            "UnauthRoleName": "amplify-repetoire-local-20190919095127-unauthRole",
+            "StackName": "amplify-repetoire-local-20190919095127",
+            "StackId": "arn:aws:cloudformation:eu-west-1:081076588590:stack/amplify-repetoire-local-20190919095127/47613ea0-dab2-11e9-977e-02e29081c656"
+        },
+        "categories": {
+            "auth": {
+                "amplifyrepetoire21d0395d": {}
+            }
+        }
+    }
+}
