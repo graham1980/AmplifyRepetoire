@@ -34,7 +34,9 @@ export class AppProvider extends React.Component {
     }
 
     async componentDidMount() {
-        const result = await API.graphql(graphqlOperation(listRecipes));
+        const limit = 100;
+        const result = await API.graphql(graphqlOperation(listRecipes,{limit}));
+        
         this.setState({recipes: result.data.listRecipes.items});
     
         const options = this.state.categories
