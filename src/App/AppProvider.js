@@ -28,6 +28,7 @@ export class AppProvider extends React.Component {
             handleAddRecipe: this.handleAddRecipe,
             handleTitleChange: this.handleTitleChange,
             handleCategoryChange: this.handleCategoryChange,
+            handleDeleteRecipe:this.handleDeleteRecipe,
             modal: false,
             isSearching: false
         };
@@ -78,6 +79,33 @@ export class AppProvider extends React.Component {
     handleTitleChange = event => { this.setState({title: event.target.value}) }
   
     handleCategoryChange = event => { this.setState({selectedCategory: event.target.value}) }
+
+    handleUpdateRecipe = async () => {
+        const {recipes, id, title, selectedCategory} = this.state;
+        const input = {
+          id,
+          title,
+          category: selectedCategory
+        }
+        const result = await API.graphql(graphqlOperation(updateRecipe, {input}))
+        const updatedRecipe = result.data.updateRecipe;
+        const index = recipes.findIndex(title => title.id === updatedRecipe.id)
+        const updatedRecipes = [
+          ...recipes.slice(0,index),
+          updatedRecipe,
+          ...recipes.slice(index+1)
+        ]
+        this.setState({recipes:updatedRecipes,title:"", id:""});
+      }
+    
+      handleDeleteRecipe = async recipeId => {
+        const {recipes} = this.state;
+        const input = { id: recipeId};
+        const result = await API.graphql(graphqlOperation(deleteRecipe, {input}))
+        const deletedRecipeId = result.data.deleteRecipe.id;
+        const updatedRecipes = recipes.filter(title => title.id !== deletedRecipeId);
+        this.setState({recipes: updatedRecipes})
+      }    
 
     render(){
         return(

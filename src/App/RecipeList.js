@@ -9,7 +9,7 @@ function getRecipesToDisplay(recipes,filteredRecipes){
 
 export default function({recipes}){
     return(<AppContext.Consumer>
-            {({recipes,filteredRecipes}) => {
+            {({recipes,filteredRecipes,handleDeleteRecipe}) => {
 
                 let recipesToDisplay = getRecipesToDisplay(recipes,filteredRecipes);
 
@@ -20,7 +20,9 @@ export default function({recipes}){
                     {recipesToDisplay.map(recipe => (
                         <List.Item key={recipe.id}>
                             <List.Content floated='right'>
-                                {recipe.category}
+                                {recipe.category}&nbsp;
+                                <List.Icon name="edit"/>
+                                <List.Icon name="delete" onClick={() => handleDeleteRecipe(recipe.id)}/>
                             </List.Content>
                             <List.Icon name="food"/>
                             <List.Content>
