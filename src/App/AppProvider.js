@@ -29,6 +29,7 @@ export class AppProvider extends React.Component {
             handleTitleChange: this.handleTitleChange,
             handleCategoryChange: this.handleCategoryChange,
             handleDeleteRecipe:this.handleDeleteRecipe,
+            handleSetRecipe:this.handleSetRecipe,
             modal: false,
             isSearching: false
         };
